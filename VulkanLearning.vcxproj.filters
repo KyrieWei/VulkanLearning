@@ -27,4 +27,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vertex_shader.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="fragment_shader.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="compile.bat">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

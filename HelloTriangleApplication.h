@@ -13,6 +13,8 @@
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
 
+const int MAX_FRAMES_IN_FLIGHT = 2;
+
 const std::vector<const char*> validationLayers = { "VK_LAYER_KHRONOS_validation" };
 
 const std::vector<const char*> deviceExtensions = { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
@@ -65,6 +67,25 @@ private:
 	VkExtent2D swapChainExtent;
 
 	std::vector<VkImageView> swapChainImageViews;
+	std::vector<VkFramebuffer> swapChainFramebuffers;
+
+	VkRenderPass renderPass;
+	VkPipelineLayout pipelineLayout;
+
+	VkPipeline graphicsPipeline;
+
+	VkCommandPool commandPool;
+	std::vector<VkCommandBuffer> commandBuffers;
+
+	//VkSemaphore imageAvailableSemaphore;
+	//VkSemaphore renderFinishedSemaphore;
+
+	std::vector<VkSemaphore> imageAvailableSemaphores;
+	std::vector<VkSemaphore> renderFinishedSemaphores; 
+	std::vector<VkFence> inFlightFences;
+	std::vector<VkFence> imagesInFlight;
+
+	size_t currentFrame = 0;
 
 public:
 
@@ -92,6 +113,20 @@ private:
 
 	void createImageViews();
 
+	void createRenderPass();
+
+	void createGraphicsPipeline();
+
+	void createFramebuffers();
+
+	void createCommandPool();
+
+	void createCommandBuffers();
+
+	void createSyncObjects();
+
+	void drawFrame();
+
 	SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
 
 	VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
@@ -109,5 +144,9 @@ private:
 	bool checkDeviceExtensionSupport(VkPhysicalDevice device);
 
 	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+
+	VkShaderModule createShaderModule(const std::vector<char>& code);
+
+	static std::vector<char> readFile(const std::string& filename);
 };
 
