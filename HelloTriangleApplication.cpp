@@ -35,7 +35,7 @@ void HelloTriangleApplication::mainLoop()
 		drawFrame();
 	}
 
-	vkDeviceWaitIdle(device);
+	//vkDeviceWaitIdle(device);
 }
 
 void HelloTriangleApplication::cleanup()
@@ -545,7 +545,7 @@ void HelloTriangleApplication::createCommandBuffers()
 
 	if (vkAllocateCommandBuffers(device, &allocInfo, commandBuffers.data()) != VK_SUCCESS)
 	{
-		throw std::runtime_error("failed to allocate command buffers!");
+		throw std::runtime_error("failed to allocate command  buffers!");
 	}
 
 	for (size_t i = 0; i < commandBuffers.size(); i++)
@@ -710,7 +710,7 @@ VkSurfaceFormatKHR HelloTriangleApplication::chooseSwapSurfaceFormat(const std::
 
 	return availableFormats[0];
 }
-
+ 
 VkPresentModeKHR HelloTriangleApplication::chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes)
 {
 	for (const auto& availablePresentMode : availablePresentModes)
