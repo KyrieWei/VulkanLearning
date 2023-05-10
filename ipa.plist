@@ -11,7 +11,7 @@
             <key>kind</key>
             <string>software-package</string>
             <key>url</key>
-            <string>https://devops.devcloud.ztgame.com/ms/artifactory/api/external/artifactories/bucket/seaIsland/iOS_stable/file/download/local?version=96&objectKey=twg.ipa</string>
+            <string>https://devops.devcloud.ztgame.com/ms/artifactory/api/external/artifactories/bucket/seaIsland/iOS_stable/file/download/local?version=96&amp;objectKey=twg.ipa</string>
           </dict>
         </array>
         <key>metadata</key>
